@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation | Kodrix IDE</title>
+    <meta name="description" content="Official documentation for Kodrix IDE — covering architecture, runtimes, Beta Mode, Crashlytics, frameworks, Git, and troubleshooting.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,49 +16,108 @@
             padding: 40px;
             text-align: left;
         }
-        .docs-container h1, .docs-container h2, .docs-container h3 {
+        .docs-container h1 {
             background: linear-gradient(90deg, #fff, #a5b4fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-top: 2rem;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-container h2 {
+            background: linear-gradient(90deg, #fff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
             margin-bottom: 1rem;
         }
-        .docs-container h1 { font-size: 3rem; }
-        .docs-container h2 { font-size: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
-        .docs-container h3 { font-size: 1.5rem; }
+        .docs-container h3 {
+            color: #a5b4fc;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
         .docs-container p, .docs-container li {
             color: rgba(255, 255, 255, 0.85);
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
             font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+        .docs-container ul, .docs-container ol {
+            padding-left: 1.5rem;
         }
         .docs-container code {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.2rem 0.4rem;
+            background: rgba(165, 180, 252, 0.12);
+            padding: 0.15rem 0.4rem;
             border-radius: 4px;
-            font-family: monospace;
+            font-family: 'Courier New', monospace;
             color: #a5b4fc;
+            font-size: 0.88rem;
         }
         .docs-container pre {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             overflow-x: auto;
-            margin-bottom: 1.5rem;
+            margin: 1rem 0 1.5rem 0;
         }
         .docs-container pre code {
             background: none;
             padding: 0;
             color: #e2e8f0;
+            font-size: 0.9rem;
         }
+        .docs-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        .docs-container th {
+            background: rgba(88, 166, 255, 0.1);
+            color: #58A6FF;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .docs-container td {
+            padding: 10px 14px;
+            color: rgba(255,255,255,0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .docs-container tr:last-child td { border-bottom: none; }
         .docs-container blockquote {
-            border-left: 4px solid #58A6FF;
-            padding-left: 1rem;
+            border-left: 3px solid #58A6FF;
+            padding: 0.8rem 1rem;
             margin: 1rem 0;
-            color: #8b949e;
-            font-style: italic;
+            background: rgba(88, 166, 255, 0.05);
+            border-radius: 0 6px 6px 0;
         }
+        .docs-container blockquote p { margin-bottom: 0; color: #8b949e; }
+        .warning-box {
+            border-left: 3px solid #f78166;
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+            background: rgba(247, 129, 102, 0.06);
+            border-radius: 0 6px 6px 0;
+        }
+        .warning-box p { margin-bottom: 0; color: #f78166; }
+        .toc {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+        .toc h3 { color: #58A6FF; margin-top: 0; }
+        .toc ol { margin-bottom: 0; }
+        .toc li a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+        .toc li a:hover { color: #a5b4fc; }
     </style>
 </head>
 <body>
@@ -72,6 +132,7 @@
         <ul class="nav-links">
             <li><a href="index.html#features">Features</a></li>
             <li><a href="index.html#install">Installation</a></li>
+            <li><a href="index.html#license">License</a></li>
             <li><a href="docs.html">Documentation</a></li>
             <li><a href="https://github.com/Zohaib8090/KodrixIDE/releases" class="btn-small">Download</a></li>
         </ul>
@@ -79,82 +140,149 @@
 
     <div class="docs-container glass card-main">
         <h1>Kodrix IDE Documentation</h1>
-        <p>Welcome to the official documentation for Kodrix IDE. This guide covers how to effectively use the IDE, understand its internal architecture, use frameworks, and troubleshoot common errors.</p>
+        <p>Welcome to the official documentation. This guide covers the internal architecture, how to use runtimes, web frameworks, Git, crash reporting, and how to troubleshoot common errors on Android.</p>
 
-        <h2>1. Getting Started: What You Can Do</h2>
-        <p>Kodrix is a complete development environment on your phone. You can:</p>
-        <ul>
-            <li><strong>Write Code:</strong> Multi-tab editor with syntax highlighting for popular languages.</li>
-            <li><strong>Run Commands:</strong> Open the terminal and use <code>node</code>, <code>npm</code>, <code>git</code>, and standard Unix commands (e.g. <code>ls</code>, <code>cd</code>, <code>cat</code>, <code>grep</code>).</li>
-            <li><strong>Build Web Apps:</strong> Run <code>npm run dev</code> to start web frameworks like React, Vite, or Vue, and view them via the built-in browser tab at <code>localhost</code>.</li>
-            <li><strong>Version Control:</strong> Use the <code>git</code> command to clone repos, commit changes, and push code back to GitHub.</li>
-        </ul>
-        <p><strong>Example - Running a simple Node.js script:</strong></p>
-        <pre><code># 1. Create a file
-echo "console.log('Hello from Kodrix!');" > test.js
+        <div class="toc">
+            <h3>📚 Table of Contents</h3>
+            <ol>
+                <li><a href="#architecture">Architecture & File System</a></li>
+                <li><a href="#marketplace">Runtimes & The Marketplace</a></li>
+                <li><a href="#frameworks">Working with Web Frameworks</a></li>
+                <li><a href="#git">Source Control (Git)</a></li>
+                <li><a href="#developer">Developer Settings</a></li>
+                <li><a href="#crashlytics">Crash Reporting (Firebase Crashlytics)</a></li>
+                <li><a href="#troubleshooting">Troubleshooting & Common Errors</a></li>
+            </ol>
+        </div>
 
-# 2. Run the file
-node test.js</code></pre>
+        <!-- 1 -->
+        <h2 id="architecture">1. Architecture & File System</h2>
+        <p>Kodrix emulates a standard Linux environment on Android using a custom virtualized filesystem inside its sandboxed app directory at <code>/data/data/com.kodrix.zohaib/files/</code>.</p>
 
-        <h2>2. Architecture & File System</h2>
-        <p>Because Android enforces strict sandboxing, Kodrix maintains its own isolated virtualized filesystem located inside <code>/data/data/com.kodrix.zohaib/files/</code>.</p>
-        <ul>
-            <li><code>/usr/bin/</code>: The primary executable path. This contains the active wrapper scripts for tools like Node.js and Git. When you type <code>node</code>, the system looks here first.</li>
-            <li><code>/usr/bin_safe/</code>: The fallback directory. Contains static, unbreakable wrappers pointing strictly to the IDE's bundled runtimes. Used only during <strong>Safe Mode</strong>.</li>
-            <li><code>/usr/lib/</code>: Stores required shared libraries (<code>.so</code>) for downloaded runtimes.</li>
-            <li><code>/npm_pkg/</code>: The global NPM directory. Running <code>npm install -g</code> installs packages here to bypass Android permission restrictions.</li>
-            <li><code>/runtimes/</code>: Stores downloaded alternative versions of tools from the Marketplace.</li>
-        </ul>
+        <table>
+            <thead><tr><th>Directory</th><th>Purpose</th></tr></thead>
+            <tbody>
+                <tr><td><code>/usr/bin/</code></td><td>Primary execution path. Active wrappers for <code>node</code>, <code>git</code>, etc. When you type <code>node</code>, this is where it resolves.</td></tr>
+                <tr><td><code>/usr/bin_safe/</code></td><td>Recovery directory. Contains static wrappers pointing strictly to bundled tools. Used only during <strong>Safe Mode</strong>.</td></tr>
+                <tr><td><code>/usr/lib/</code></td><td>Shared libraries (<code>.so</code> files) required by downloaded runtimes (e.g., <code>libffi.so</code>, <code>libz.so.1</code>).</td></tr>
+                <tr><td><code>/npm_pkg/</code></td><td>Global NPM directory. <code>npm install -g</code> puts packages here to bypass Android permission restrictions.</td></tr>
+                <tr><td><code>/runtimes/</code></td><td>Storage for downloaded toolchain versions from the Marketplace.</td></tr>
+            </tbody>
+        </table>
 
-        <h2>3. Marketplace & Beta Mode</h2>
-        <p>The Kodrix Marketplace allows you to hot-swap internal runtimes and download new versions without updating the entire app.</p>
-        
+        <!-- 2 -->
+        <h2 id="marketplace">2. Runtimes & The Marketplace</h2>
+        <p>The built-in <strong>Marketplace</strong> lets you download and hot-swap entire toolchains without reinstalling the app.</p>
+
         <h3>Bundled vs Downloaded Runtimes</h3>
-        <p>Kodrix ships with <strong>Bundled</strong> versions of essential tools (e.g., Node.js v25.8.2, Git v2.34.0) pre-compiled for Android's Bionic libc. If you need a different version, you can download it via the Marketplace.</p>
+        <ul>
+            <li><strong>Bundled:</strong> Kodrix ships with pre-compiled, stable tools (Node.js v25.8.2, Git v2.34.0) guaranteed to work on Android's Bionic libc.</li>
+            <li><strong>Downloaded:</strong> You can fetch newer versions from the Marketplace. Kodrix dynamically updates <code>/usr/bin/</code> wrappers to point to the new version.</li>
+        </ul>
 
         <h3>Beta Mode</h3>
-        <p>Certain runtimes are experimental and hidden by default.</p>
+        <p>Experimental features and runtimes are hidden by default. To access them:</p>
         <ol>
-            <li>Open the IDE <strong>Settings</strong>.</li>
-            <li>Scroll to <strong>Developer</strong> and toggle <strong>Beta Mode</strong>.</li>
-            <li>The <strong>Runtimes</strong> tab will now be visible in the Marketplace.</li>
-            <li>You can now download and test beta versions of Node.js or Git.</li>
+            <li>Open the IDE and go to the <strong>Settings</strong> tab.</li>
+            <li>Scroll to the <strong>Developer</strong> section.</li>
+            <li>Toggle <strong>Beta Mode</strong> ON.</li>
         </ol>
+        <p>The <strong>Runtimes</strong> tab will now appear in the Marketplace. Your preference is saved across restarts.</p>
+        <div class="warning-box"><p>⚠️ Beta runtimes may fail on certain device architectures. Use <strong>Safe Mode</strong> to recover if the terminal breaks.</p></div>
 
-        <h2>4. Working with Web Frameworks</h2>
-        <p>You can run modern frameworks directly on your device. Use the terminal to scaffold a project:</p>
-        <pre><code># Scaffold a Vite React app
-npx create-vite@latest my-app --template react
+        <!-- 3 -->
+        <h2 id="frameworks">3. Working with Web Frameworks</h2>
+        <p>Kodrix fully supports React, Vue, Svelte, Next.js, and Vite. Use the terminal to scaffold and run projects.</p>
 
-# Install dependencies
+        <h3>React + Vite</h3>
+        <pre><code>npx create-vite@latest my-app --template react
 cd my-app
 npm install
-
-# Start the dev server
 npm run dev</code></pre>
-        <p>Once the server starts (usually on port 5173), open Kodrix's internal <strong>Browser</strong> tab and navigate to <code>http://localhost:5173</code>.</p>
 
-        <h2>5. Troubleshooting & Error Fixes</h2>
-        <p>Mobile architectures can occasionally cause binary linking errors. Here is how to resolve the most common ones.</p>
+        <h3>Next.js</h3>
+        <pre><code>npx create-next-app@latest my-app
+cd my-app
+npm run dev</code></pre>
+
+        <p>Once the server starts, open Kodrix's <strong>Browser</strong> tab and navigate to <code>http://localhost:5173</code> (or whichever port is shown).</p>
+
+        <table>
+            <thead><tr><th>Framework</th><th>Status</th><th>Notes</th></tr></thead>
+            <tbody>
+                <tr><td>React + Vite</td><td>✅ Working</td><td>Use <code>@vitejs/plugin-react</code></td></tr>
+                <tr><td>Express / Node.js</td><td>✅ Working</td><td>Full support</td></tr>
+                <tr><td>Vue + Vite</td><td>✅ Working</td><td>Pure JS build</td></tr>
+                <tr><td>Svelte + Vite</td><td>✅ Working</td><td>Pure JS build</td></tr>
+                <tr><td>Next.js</td><td>✅ Working</td><td>Webpack mode only — no Turbopack</td></tr>
+            </tbody>
+        </table>
+
+        <!-- 4 -->
+        <h2 id="git">4. Source Control (Git)</h2>
+        <p>Git v2.34.0 is bundled and available immediately in the terminal. No additional setup is needed.</p>
+        <pre><code>git init
+git add .
+git commit -m "Initial commit"
+git push</code></pre>
+
+        <h3>Authentication</h3>
+        <p>Browser-based OAuth may fail inside the Android sandbox. Use <strong>GitHub Personal Access Tokens (PAT)</strong> instead:</p>
+        <pre><code>git clone https://&lt;YOUR_TOKEN&gt;@github.com/username/repo.git</code></pre>
+        <p>Generate a token at <strong>GitHub → Settings → Developer settings → Personal access tokens</strong>.</p>
+
+        <!-- 5 -->
+        <h2 id="developer">5. Developer Settings</h2>
+        <p>Found in <strong>Settings → Developer</strong>, these tools are for advanced users and IDE developers.</p>
+
+        <h3>Beta Mode Toggle</h3>
+        <p>Unlocks experimental features and the Runtimes tab in the Marketplace. See Section 2.</p>
+
+        <h3>Force Test Crash</h3>
+        <p>A red <strong>Force Test Crash</strong> button is available below the Beta Mode toggle. When tapped:</p>
+        <ul>
+            <li>The app immediately crashes with the log message <code>"App is forced crashed"</code>.</li>
+            <li>This message appears verbatim in Firebase Crashlytics, making deliberate test crashes instantly distinguishable from real crashes.</li>
+            <li><strong>Re-open the app after tapping</strong> — Crashlytics sends the report on the next launch.</li>
+        </ul>
+
+        <!-- 6 -->
+        <h2 id="crashlytics">6. Crash Reporting (Firebase Crashlytics)</h2>
+        <p>Kodrix IDE uses Firebase Crashlytics to automatically capture all crashes — Java, Kotlin, and native NDK.</p>
+        <ul>
+            <li><strong>Dashboard:</strong> <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a> → Project <code>kodrixide</code> → Crashlytics</li>
+            <li>Reports appear within <strong>2–5 minutes</strong> of the crash occurring.</li>
+            <li>Crashes are uploaded on the <strong>next app launch</strong> after they occur.</li>
+            <li>Active for both <strong>debug and release</strong> builds.</li>
+        </ul>
+
+        <!-- 7 -->
+        <h2 id="troubleshooting">7. Troubleshooting & Common Errors</h2>
 
         <h3>Error: <code>CANNOT LINK EXECUTABLE: library "libffi.so" not found</code></h3>
-        <p><strong>Cause:</strong> You downloaded an experimental Node.js version (like v26.2.0) that depends on a shared library missing from your device.</p>
+        <p><strong>Cause:</strong> You downloaded an experimental Node.js version (e.g., v26.2.0) that depends on a shared library missing from Android's core system.</p>
         <p><strong>Fix:</strong> Open the Marketplace and activate the <strong>Bundled (v25)</strong> or a stable LTS version instead.</p>
 
         <h3>Error: <code>CANNOT LINK EXECUTABLE: library "libz.so.1" not found</code></h3>
         <p><strong>Cause:</strong> A downloaded Git binary is failing to link with the bundled <code>zlib</code>.</p>
         <p><strong>Fix:</strong> Switch your Git version back to <strong>v2.34.0 (Bundled)</strong> via the Marketplace.</p>
 
-        <h3>Error: <code>Permission denied</code> when executing a script</h3>
-        <p><strong>Fix:</strong> You must make the file executable. Run <code>chmod +x script_name.sh</code>.</p>
+        <h3>Error: <code>Exec format error</code> on Node.js</h3>
+        <p><strong>Cause:</strong> CPU architecture mismatch — e.g., running an ARM binary on an x86_64 emulator.</p>
+        <p><strong>Fix:</strong> Enable Beta Mode, open the Marketplace Runtimes tab, and download the version matching your device architecture.</p>
+
+        <h3>Error: <code>Permission denied</code> when running a script</h3>
+        <p><strong>Cause:</strong> The file lacks execution permissions (Android enforces this strictly).</p>
+        <p><strong>Fix:</strong> Run <code>chmod +x your_script.sh</code> before executing.</p>
 
         <h3>Emergency Recovery: Safe Mode</h3>
-        <p>If a broken downloaded runtime crashes your terminal instantly, you can recover by using Safe Mode:</p>
+        <p>If a broken runtime crashes the terminal instantly on open (preventing you from fixing it):</p>
         <ol>
-            <li>Go to <strong>Settings > Environment</strong> and enable <strong>Safe Mode</strong>.</li>
-            <li>Restart the Terminal. The terminal will now strictly use the stable, bundled binaries (ignoring any broken downloaded versions).</li>
-            <li>Open the Marketplace, switch your active runtime to the Bundled version.</li>
-            <li>Go back to Settings and turn Safe Mode <strong>OFF</strong>.</li>
+            <li>Open the IDE <strong>Settings</strong> tab.</li>
+            <li>Scroll to <strong>Environment</strong> and enable <strong>Safe Mode</strong>.</li>
+            <li>Restart the Terminal session. It now uses <code>/usr/bin_safe/</code>, ignoring all downloaded runtimes.</li>
+            <li>Open the <strong>Marketplace</strong> and switch your active runtime to a <strong>Bundled</strong> version.</li>
+            <li>Return to Settings and turn <strong>Safe Mode OFF</strong>.</li>
         </ol>
     </div>
 
