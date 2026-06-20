@@ -207,6 +207,28 @@ npm run dev</code></pre>
 
         <p>Once the server starts, open Kodrix's <strong>Browser</strong> tab and navigate to <code>http://localhost:5173</code> (or whichever port is shown).</p>
 
+        <h3>Python 3</h3>
+        <p>Python 3 runs fully on-device with no additional setup.</p>
+        <pre><code>python3 --version
+python3 script.py</code></pre>
+        <p>Install packages using pip:</p>
+        <pre><code>pip3 install requests numpy flask</code></pre>
+
+        <h3>Flask (Python Web Server)</h3>
+        <pre><code>pip3 install flask</code></pre>
+        <pre><code># app.py
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return 'Hello from Kodrix!'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)</code></pre>
+        <pre><code>python3 app.py</code></pre>
+        <p>Once Flask starts, open Kodrix's <strong>Browser</strong> tab and navigate to <code>http://localhost:5000</code>.</p>
+
         <table>
             <thead><tr><th>Framework</th><th>Status</th><th>Notes</th></tr></thead>
             <tbody>
